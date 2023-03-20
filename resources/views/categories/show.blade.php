@@ -19,5 +19,6 @@
                 <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
             </div>
         </div>
-        @endforeach       
+        @endforeach
+    </div>    
 @endsection
