@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -12,7 +14,9 @@ class CartController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        $categories = Category::all();
+        return view('cart.index', compact('products', 'categories'));
     }
 
     /**
