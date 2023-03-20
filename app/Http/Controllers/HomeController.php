@@ -12,6 +12,7 @@ class HomeController extends Controller
     public function index()
     {   
         $categories = Category::all();
-        return view('home.index', compact('categories'));
+        $products = Product::orderBy('price', 'asc')->limit(3)->get();;
+        return view('home.index', compact('categories', 'products'));
     }
 }
