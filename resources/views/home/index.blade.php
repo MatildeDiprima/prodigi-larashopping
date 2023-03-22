@@ -12,8 +12,8 @@
                 <div class="card-body">
                     <h5 class="card-title">{{substr($product->title,0,40 )}}</h5>
                     <p class="card-text">{{ substr($product->description,0,80 )}}</p>
-                    <h3 class="card-price">{{ $product->price }}</h3>
-                    <a href="#" class="btn btn-primary">Aggiungi al carrello</a>
+                    <h3 class="card-price">€ {{ $product->price }}</h3>
+                    <a href="{{ route('carts.index') }}" class="btn btn-primary">Aggiungi al carrello</a>
                 </div>
             </div>
             @endforeach

@@ -29,12 +29,12 @@
                         </li>
                         @foreach($categories as $category)
                             <li class="nav-item">
-                            <a class="nav-link" href="{{ route('categories.show',  $category->id) }}">{{$category->name}}</a>
+                                <a class="nav-link" href="{{ route('categories.show',  $category->id) }}">{{$category->name}}</a>
                             </li>
                         @endforeach
                     </ul>
                     <span class="navbar-text">
-                        <a href="{{ route('cart.index') }}">Carrello</a>
+                        <a href="{{ route('carts.index') }}">Carrello</a>
                     </span>
 
                     <form class="d-flex" role="search">

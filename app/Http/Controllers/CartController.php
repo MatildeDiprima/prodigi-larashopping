@@ -12,11 +12,12 @@ class CartController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Category $category)
     {
         $products = Product::all();
         $categories = Category::all();
-        return view('cart.index', compact('products', 'categories'));
+        $carts = Cart::all();
+        return view('carts.index', compact('products', 'categories', 'carts'));
     }
 
     /**
@@ -32,7 +33,21 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            "product_id" => 'required|exists:products,id',
+        ]);
+
+        if(Cart::where('product_id', '=', $validated['product_id'])->exists()){
+            Cart::where('product_id', '=', $validated['product_id'])->increment('quantity');
+        }
+        else{
+            $cart = Cart::create([
+                "product_id" => $validated['product_id'],
+                "quantity" => 1,
+            ]);
+        }
+
+        return redirect(route('carts.index'))->with('message', 'Articolo <strong>'.$request->title.'</strong> aggiunto correttamente al carrello');
     }
 
     /**
